@@ -7,7 +7,7 @@ import { useSearchParams } from "react-router-dom";
 const Input: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { name } = useSelector((store: RootState) => store.filter);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [, setSearchParams] = useSearchParams();
 
   const handleGetName = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(getName(e.target.value));

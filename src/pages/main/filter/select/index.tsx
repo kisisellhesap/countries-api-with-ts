@@ -10,7 +10,7 @@ const Select: FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const { region } = useSelector((store: RootState) => store.filter);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [, setSearchParams] = useSearchParams();
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
