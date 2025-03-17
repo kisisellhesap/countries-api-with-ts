@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { country } from "../../../redux/countrySlice";
-import { useParams } from "react-router-dom";
 import millify from "millify";
 
 interface Props {
