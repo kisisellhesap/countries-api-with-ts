@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* (Dark Mode Elements) */
+  --color-dark-blue: hsl(209, 23%, 22%);
+
+  /* (Dark Mode Background) */
+  --color-very-dark-blue: hsl(207, 26%, 17%);
+
+  /* (Light Mode Background) */
+  --color-very-light-gray: hsl(0, 0%, 98%);
+
+  /* (Light Mode Text) */
+  --color-very-dark-blue1: hsl(200, 15%, 8%);
+
+  /* (Light Mode Input) */
+  --color-dark-gray: hsl(0, 0%, 52%);
+
+  /* (Dark Mode Text & Light Mode Elements) */
+  --color-White: hsl(0, 0%, 100%);
+
+  --font-Nunito: "Nunito Sans", sans-serif;
+}
+
+@layer utilities {
+  body {
+    @apply min-h-screen bg-very-light-gray dark:bg-very-dark-blue text-very-dark-blue1 dark:text-White  font-Nunito;
+  }
+  #root {
+    @apply min-h-screen flex flex-col;
+  }
+  .container {
+    @apply max-w-[1460px] mx-auto p-5;
+  }
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
+  filter: invert(50%);
+  font-size: 25px;
+  cursor: pointer;
+}
