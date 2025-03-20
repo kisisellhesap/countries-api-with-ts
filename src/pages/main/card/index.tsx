@@ -1,16 +1,14 @@
 import { FC } from "react";
-import { country } from "../../../redux/countrySlice";
+import { Country } from "../../../redux/countrySlice";
 import millify from "millify";
 
 interface Props {
-  country: country;
+  country: Country;
 }
 const Card: FC<Props> = ({ country }) => {
   return (
-    <div className="flex flex-col bg-White dark:bg-dark-blue shadow-lg rounded-md overflow-hidden cursor-pointer hover:brightness-110">
-      <div className="bg-red-400 h-50">
-        <img src={country.flag} className="object-cover w-[100%] h-[100%]" />
-      </div>
+    <div className="flex flex-col bg-White dark:bg-dark-blue shadow rounded-md overflow-hidden cursor-pointer hover:brightness-110">
+      <img src={country.flag} className="object-cover w-full h-56 " />
 
       <div className="flex flex-col gap-3 p-4">
         <h2 className="font-bold text-xl">{country.name}</h2>

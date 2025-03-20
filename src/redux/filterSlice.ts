@@ -3,11 +3,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface Filter {
   region: string;
   name: string;
+  loading: boolean;
 }
 
 const initialState: Filter = {
   region: "All",
   name: "",
+  loading: false,
 };
 
 const filterSlice = createSlice({
@@ -20,8 +22,11 @@ const filterSlice = createSlice({
     getName: (state, action: PayloadAction<string>) => {
       state.name = action.payload;
     },
+    setLoading: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+    },
   },
 });
 
 export default filterSlice.reducer;
-export const { getRegion, getName } = filterSlice.actions;
+export const { getRegion, getName, setLoading } = filterSlice.actions;
