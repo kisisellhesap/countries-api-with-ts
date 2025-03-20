@@ -9,6 +9,7 @@ import Loader from "../../components/loader";
 import { getByFilter } from "../../redux/countrySlice";
 import { debounce } from "lodash";
 import { setLoading } from "../../redux/filterSlice";
+import NotFoundCountry from "../../components/notFoundCountry";
 
 const Main: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -46,12 +47,14 @@ const Main: FC = () => {
           <Loader />
         ) : error ? (
           error
-        ) : (
+        ) : countries.length !== 0 ? (
           countries.map((country, i) => (
             <Link to={`detail/${country.name.toLowerCase()}`} key={i}>
               <Card country={country} />
             </Link>
           ))
+        ) : (
+          <NotFoundCountry />
         )}
       </div>
     </main>
