@@ -11,19 +11,22 @@
 
 ✅ Filtering & Search:
 
-Filter by region (Asia, Europe, etc.).
-Search by country name (optimized with Debounce).
+- Filter by region (Asia, Europe, etc.).
+- Search by country name (optimized with Debounce).
+
 ✅ Country Detail Page:
 
-Displays details such as flag, population, capital, languages, and currency of the selected country.
-Shows bordering countries, allowing users to navigate between them.
+- Displays details such as flag, population, capital, languages, and currency of the selected country.
+- Shows bordering countries, allowing users to navigate between them.
+
 ✅ State Management:
 
-Redux Toolkit for global state management.
-Redux Persist to retain state in the browser.
+- Redux Toolkit for global state management.
+- Redux Persist to retain state in the browser.
+
 ✅ Responsive Design:
 
-Built with Tailwind CSS for a modern and mobile-friendly UI.
+- Built with Tailwind CSS for a modern and mobile-friendly UI.
 
 # 🛠️ Technologies Used
 
