@@ -11,20 +11,13 @@ import { deleteCountry } from "../../redux/countrySlice";
 const Detail: FC = () => {
   const { name } = useParams();
   const dispatch = useDispatch<AppDispatch>();
-  const { allCountries, countries, detailCountry, loading, error } =
-    useSelector((store: RootState) => store.countries);
+  const { allCountries, detailCountry, loading, error } = useSelector(
+    (store: RootState) => store.countries
+  );
 
   useEffect(() => {
     dispatch(getDetail(name));
   }, [dispatch, name]);
-
-  useEffect(() => {
-    if (detailCountry) {
-      console.log("Detay Ülke:", detailCountry);
-      console.log("Borders (detayCountry.borders):", detailCountry.borders);
-      console.log("Redux countries listesi:", countries);
-    }
-  }, [detailCountry, countries]);
 
   return (
     <div className="container flex flex-col gap-20">
