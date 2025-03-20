@@ -6,6 +6,7 @@ import Card from "./card";
 import { Link } from "react-router-dom";
 import { getByRegion, getCountries } from "../../redux/action";
 import Loader from "../../components/loader";
+import { getByFilter } from "../../redux/countrySlice";
 
 const Main: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -17,20 +18,22 @@ const Main: FC = () => {
   useEffect(() => {
     if (region === "All") {
       dispatch(getCountries());
-    }
-  }, [dispatch, region]);
-
-  useEffect(() => {
-    // dispatch(getByFilter({ region, name }));
-
-    if (region !== "All") {
+    } else {
       dispatch(getByRegion(region));
     }
   }, [dispatch, region]);
 
   useEffect(() => {
+    if (name) {
+      dispatch(getByFilter(name));
+    } else {
+      dispatch(getCountries());
+    }
+  }, [dispatch, name]);
+
+  useEffect(() => {
     console.log(countries);
-  }, [region]);
+  }, []);
 
   return (
     <main className="container flex flex-col gap-5 flex-1 relative">

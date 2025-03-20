@@ -26,7 +26,7 @@ export interface DetailCountry {
 
 interface CountryState {
   countries: Country[];
-  filteredCountries: Country[];
+  allCountries: Country[];
   loading: boolean;
   error: string | undefined;
   detailCountry: DetailCountry | null;
@@ -34,7 +34,7 @@ interface CountryState {
 
 const initialState: CountryState = {
   countries: [],
-  filteredCountries: [],
+  allCountries: [],
   loading: true,
   error: undefined,
   detailCountry: null,
@@ -45,23 +45,24 @@ const countrySlice = createSlice({
   initialState,
   reducers: {
     getByFilter: (state, action) => {
-      let filteredData = state.countries;
+      console.log(action.payload);
 
-      if (action.payload.region !== "All") {
-        filteredData = filteredData.filter(
-          (country) =>
-            country.region.toLowerCase() === action.payload.region.toLowerCase()
-        );
+      // Eğer arama kutusu boşsa, tüm ülkeleri geri getir
+      if (!action.payload.trim()) {
+        state.countries = state.allCountries;
+        return;
+      }
+      if (!action.payload.trim()) {
+        state.countries = state.allCountries;
+        return;
       }
 
-      if (action.payload.name) {
-        filteredData = filteredData.filter((country) =>
-          country.name.toLowerCase().includes(action.payload.name.toLowerCase())
-        );
-      }
-
-      state.filteredCountries = filteredData;
+      // Küçük harfe çevirerek filtreleme yap
+      state.countries = state.allCountries.filter((country) =>
+        country.name.toLowerCase().includes(action.payload.toLowerCase())
+      );
     },
+
     deleteCountry: (state) => {
       state.countries = [];
     },
@@ -71,6 +72,8 @@ const countrySlice = createSlice({
       getCountries.fulfilled,
       (state, action: PayloadAction<Country[]>) => {
         state.countries = action.payload;
+        state.allCountries = action.payload;
+
         state.loading = false;
         state.error = undefined;
       }
