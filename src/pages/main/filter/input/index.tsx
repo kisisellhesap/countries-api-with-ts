@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../../redux/store";
 import { getName } from "../../../../redux/filterSlice";
 import { useSearchParams } from "react-router-dom";
-import { deleteCountry } from "../../../../redux/countrySlice";
 const Input: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { name } = useSelector((store: RootState) => store.filter);
