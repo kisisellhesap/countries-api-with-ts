@@ -31,6 +31,7 @@ interface CountryState {
   loading: boolean;
   error: string | undefined;
   detailCountry: DetailCountry | null;
+  rehydrated: boolean;
 }
 
 const initialState: CountryState = {
@@ -39,6 +40,7 @@ const initialState: CountryState = {
   loading: true,
   error: undefined,
   detailCountry: null,
+  rehydrated: false,
 };
 
 const countrySlice = createSlice({
@@ -81,6 +83,7 @@ const countrySlice = createSlice({
       state.loading = false;
       state.error = action.error.message;
       state.countries = [];
+
       state.detailCountry = null;
     });
 
@@ -96,6 +99,7 @@ const countrySlice = createSlice({
       state.loading = true;
       state.error = undefined;
       state.countries = [];
+
       state.detailCountry = null;
     });
     builder.addCase(getByRegion.rejected, (state, action) => {
@@ -120,6 +124,10 @@ const countrySlice = createSlice({
       state.loading = false;
       state.error = action.error.message;
       state.detailCountry = null;
+    });
+
+    builder.addCase("persist/REHYDRATE", (state) => {
+      state.rehydrated = true;
     });
   },
 });

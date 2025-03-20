@@ -13,7 +13,7 @@ import NotFoundCountry from "../../components/notFoundCountry";
 
 const Main: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { countries, loading, error } = useSelector(
+  const { countries, loading, error, rehydrated } = useSelector(
     (store: RootState) => store.countries
   );
   const { name, region } = useSelector((store: RootState) => store.filter);
@@ -27,6 +27,11 @@ const Main: FC = () => {
   );
 
   useEffect(() => {
+    dispatch(getCountries());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (!rehydrated) return;
     if (name) {
       dispatch(setLoading(true));
 
@@ -36,7 +41,11 @@ const Main: FC = () => {
     } else {
       dispatch(getCountries());
     }
-  }, [dispatch, name, region]);
+
+    return () => {
+      debouncedSearch.cancel();
+    };
+  }, [dispatch, name, region, rehydrated]);
 
   return (
     <main className="container flex flex-col gap-5 flex-1 relative">
