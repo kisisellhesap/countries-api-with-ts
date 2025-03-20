@@ -27,10 +27,6 @@ const Main: FC = () => {
   );
 
   useEffect(() => {
-    dispatch(getCountries());
-  }, [dispatch]);
-
-  useEffect(() => {
     if (!rehydrated) return;
     if (name) {
       dispatch(setLoading(true));

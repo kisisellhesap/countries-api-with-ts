@@ -121,7 +121,7 @@ const Detail: FC = () => {
                       return matchingCountry ? (
                         <Link
                           key={i}
-                          to={`/countries/detail/${matchingCountry.name}`}
+                          to={`/countries/detail/${matchingCountry.name.toLowerCase()}`}
                           className="flex items-center gap-2 rounded-md w-fit bg-White dark:bg-dark-blue py-2 px-8 hover:brightness-110 shadow"
                         >
                           {matchingCountry.name}
