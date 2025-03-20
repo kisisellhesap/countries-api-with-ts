@@ -1,54 +1,36 @@
-# React + TypeScript + Vite
+# 🌍 Countries API with TypeScript
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- This project is a web application that displays detailed information about countries using the REST Countries API. It is built with modern technologies such as React, TypeScript, Redux Toolkit, and Tailwind CSS.
 
-Currently, two official plugins are available:
+🔗 Live Demo: Countries API with TS
+🔗 GitHub Repository: GitHub Repo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# 🚀 Features
 
-## Expanding the ESLint configuration
+✅ Country List: Countries retrieved from the API are displayed as cards.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+✅ Filtering & Search:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Filter by region (Asia, Europe, etc.).
+Search by country name (optimized with Debounce).
+✅ Country Detail Page:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Displays details such as flag, population, capital, languages, and currency of the selected country.
+Shows bordering countries, allowing users to navigate between them.
+✅ State Management:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Redux Toolkit for global state management.
+Redux Persist to retain state in the browser.
+✅ Responsive Design:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Built with Tailwind CSS for a modern and mobile-friendly UI.
+
+# 🛠️ Technologies Used
+
+- React 19 & TypeScript
+- Redux Toolkit & Redux Persist
+- React Router DOM 7
+- Axios (for API requests)
+- Lodash (for Debounce functionality)
+- Millify (to format large numbers)
+- Tailwind CSS (for fast and modern styling)
