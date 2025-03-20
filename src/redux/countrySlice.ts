@@ -8,6 +8,7 @@ export interface Country {
   capital: string;
   flag: string;
   cca3: string;
+  borders: string[];
 }
 
 export interface DetailCountry {
@@ -45,22 +46,15 @@ const countrySlice = createSlice({
   initialState,
   reducers: {
     getByFilter: (state, action) => {
-      console.log(action.payload);
-
-      // Eğer arama kutusu boşsa, tüm ülkeleri geri getir
-      if (!action.payload.trim()) {
-        state.countries = state.allCountries;
-        return;
-      }
       if (!action.payload.trim()) {
         state.countries = state.allCountries;
         return;
       }
 
-      // Küçük harfe çevirerek filtreleme yap
       state.countries = state.allCountries.filter((country) =>
         country.name.toLowerCase().includes(action.payload.toLowerCase())
       );
+      console.log(state.countries);
     },
 
     deleteCountry: (state) => {

@@ -11,17 +11,20 @@ import { deleteCountry } from "../../redux/countrySlice";
 const Detail: FC = () => {
   const { name } = useParams();
   const dispatch = useDispatch<AppDispatch>();
-  const { countries, detailCountry, loading, error } = useSelector(
-    (store: RootState) => store.countries
-  );
+  const { allCountries, countries, detailCountry, loading, error } =
+    useSelector((store: RootState) => store.countries);
 
   useEffect(() => {
     dispatch(getDetail(name));
   }, [dispatch, name]);
 
   useEffect(() => {
-    console.log(countries);
-  }, [countries]);
+    if (detailCountry) {
+      console.log("Detay Ülke:", detailCountry);
+      console.log("Borders (detayCountry.borders):", detailCountry.borders);
+      console.log("Redux countries listesi:", countries);
+    }
+  }, [detailCountry, countries]);
 
   return (
     <div className="container flex flex-col gap-20">
@@ -113,15 +116,17 @@ const Detail: FC = () => {
               {detailCountry.borders.length !== 0 && (
                 <div className="flex gap-3 flex-wrap w-[100%] mt-auto">
                   <span className="whitespace-nowrap font-bold">
-                    Border Countries :{" "}
+                    Border Countries :
                   </span>
                   <div className="flex gap-3 flex-wrap">
                     {detailCountry.borders.map((border, i) => {
-                      const matchingCountry = countries.find(
-                        (country) => country.cca3 === border
+                      const matchingCountry = allCountries.find(
+                        (country) =>
+                          country.cca3.toLowerCase() === border.toLowerCase()
                       );
 
                       console.log(matchingCountry);
+
                       return matchingCountry ? (
                         <Link
                           key={i}

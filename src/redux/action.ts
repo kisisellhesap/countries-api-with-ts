@@ -11,6 +11,7 @@ export const getCountries = createAsyncThunk("getCountry", async () => {
     population: country.population,
     flag: country.flags?.svg || country.flags?.png,
     cca3: country.cca3,
+    borders: country.borders || [],
   }));
 
   return filteredData;
@@ -19,7 +20,6 @@ export const getCountries = createAsyncThunk("getCountry", async () => {
 export const getByRegion = createAsyncThunk(
   "getByRegion",
   async (region: string) => {
-    console.log(region);
     const response = await axios.get<any[]>(
       `https://restcountries.com/v3.1/region/${region}`
     );
@@ -31,6 +31,7 @@ export const getByRegion = createAsyncThunk(
       population: country.population,
       flag: country.flags?.svg || country.flags?.png,
       cca3: country.cca3,
+      borders: country.borders || [],
     }));
 
     return filteredData;
@@ -54,7 +55,7 @@ export const getDetail = createAsyncThunk(
       nativeName: Object.values(country.name.nativeName || {}).map(
         (native: any) => native.official
       ),
-      subRegion: country.subregion,
+      subRegion: country.subregion || "There is no feature in this country",
       tld: country.tld || [],
       currencies: Object.values(country.currencies || {}).map(
         (cur: any) => cur.name
@@ -67,7 +68,7 @@ export const getDetail = createAsyncThunk(
       cca3: country.cca3,
     };
 
-    console.log(filteredData);
+    // console.log(filteredData);
 
     return filteredData;
   }

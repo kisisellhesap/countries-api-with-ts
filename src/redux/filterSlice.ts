@@ -3,13 +3,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface Filter {
   region: string;
   name: string;
-  loading: boolean;
+  searchLoading: boolean;
 }
 
 const initialState: Filter = {
   region: "All",
   name: "",
-  loading: false,
+  searchLoading: false,
 };
 
 const filterSlice = createSlice({
@@ -23,7 +23,7 @@ const filterSlice = createSlice({
       state.name = action.payload;
     },
     setLoading: (state, action: PayloadAction<boolean>) => {
-      state.loading = action.payload;
+      state.searchLoading = action.payload;
     },
   },
 });
