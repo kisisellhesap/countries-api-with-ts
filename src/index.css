@@ -27,7 +27,7 @@
 
 @layer utilities {
   body {
-    @apply min-h-screen bg-very-light-gray dark:bg-very-dark-blue text-very-dark-blue1 dark:text-White  font-Nunito;
+    @apply min-h-screen bg-very-light-gray dark:bg-very-dark-blue text-very-dark-blue1 dark:text-White  font-Nunito min-w-[460px] select-none;
   }
   #root {
     @apply min-h-screen flex flex-col;

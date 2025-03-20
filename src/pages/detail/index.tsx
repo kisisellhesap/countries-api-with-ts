@@ -118,8 +118,6 @@ const Detail: FC = () => {
                           country.cca3.toLowerCase() === border.toLowerCase()
                       );
 
-                      console.log(matchingCountry);
-
                       return matchingCountry ? (
                         <Link
                           key={i}

@@ -54,7 +54,6 @@ const countrySlice = createSlice({
       state.countries = state.allCountries.filter((country) =>
         country.name.toLowerCase().includes(action.payload.toLowerCase())
       );
-      console.log(state.countries);
     },
 
     deleteCountry: (state) => {
