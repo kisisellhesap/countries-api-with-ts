@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { Country } from "../../../redux/countrySlice";
 import millify from "millify";
+import { Country } from "../../../types";
 
 interface Props {
   country: Country;
