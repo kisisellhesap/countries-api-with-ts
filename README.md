@@ -37,3 +37,5 @@
 - Lodash (for Debounce functionality)
 - Millify (to format large numbers)
 - Tailwind CSS (for fast and modern styling)
+
+![](countries.gif)
