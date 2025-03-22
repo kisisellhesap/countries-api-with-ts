@@ -21,7 +21,6 @@ export const getCountries = createAsyncThunk(
       cca3: country.cca3,
       borders: country.borders || [],
     }));
-    console.log(arg.name);
 
     const filteredData = arg.name
       ? data.filter((country) =>
@@ -29,9 +28,7 @@ export const getCountries = createAsyncThunk(
         )
       : data;
 
-    console.log(filteredData, "filteredData");
-    console.log(data, "data");
-    return filteredData;
+    return { allCountries: data, filteredCountries: filteredData };
   }
 );
 
@@ -44,7 +41,6 @@ export const getDetail = createAsyncThunk(
 
     const country = response.data[0];
 
-    // console.log(country);
     const filteredData = {
       flag: country.flags?.svg || country.flags?.png,
 
@@ -64,8 +60,6 @@ export const getDetail = createAsyncThunk(
       population: country.population,
       cca3: country.cca3,
     };
-
-    // console.log(filteredData);
 
     return filteredData;
   }

@@ -21,9 +21,15 @@ const countrySlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(
       getCountries.fulfilled,
-      (state, action: PayloadAction<Country[]>) => {
-        state.countries = action.payload;
-        state.allCountries = action.payload;
+      (
+        state,
+        action: PayloadAction<{
+          allCountries: Country[];
+          filteredCountries: Country[];
+        }>
+      ) => {
+        state.countries = action.payload.filteredCountries;
+        state.allCountries = action.payload.allCountries;
         state.loading = false;
         state.error = undefined;
       }

@@ -126,9 +126,7 @@ const Detail: FC = () => {
                         >
                           {matchingCountry.name}
                         </Link>
-                      ) : (
-                        null
-                      );
+                      ) : null;
                     })}
                   </div>
                 </div>
