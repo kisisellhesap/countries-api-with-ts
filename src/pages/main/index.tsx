@@ -16,7 +16,9 @@ const Main: FC = () => {
   const { name, region } = useSelector((store: RootState) => store.filter);
 
   useEffect(() => {
-    dispatch(getCountries({ region, name }));
+    if (!countries.length) {
+      dispatch(getCountries({ region, name }));
+    }
   }, [dispatch, region, name]);
 
   return (
