@@ -1,30 +1,18 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { GetCountriesArgs } from "../types";
 
-export const getCountries = createAsyncThunk("getCountry", async () => {
-  const response = await axios.get<any[]>("https://restcountries.com/v3.1/all");
+export const getCountries = createAsyncThunk(
+  "getCountry",
+  async (arg: GetCountriesArgs) => {
+    const url =
+      arg.region === "All"
+        ? "https://restcountries.com/v3.1/all"
+        : `https://restcountries.com/v3.1/region/${arg.region}`;
 
-  const filteredData = response.data.map((country) => ({
-    name: country.name.common,
-    capital: country.capital ? country.capital[0] : "No Capital",
-    region: country.region,
-    population: country.population,
-    flag: country.flags?.svg || country.flags?.png,
-    cca3: country.cca3,
-    borders: country.borders || [],
-  }));
+    const response = await axios.get<any[]>(url);
 
-  return filteredData;
-});
-
-export const getByRegion = createAsyncThunk(
-  "getByRegion",
-  async (region: string) => {
-    const response = await axios.get<any[]>(
-      `https://restcountries.com/v3.1/region/${region}`
-    );
-
-    const filteredData = response.data.map((country) => ({
+    const data = response.data.map((country) => ({
       name: country.name.common,
       capital: country.capital ? country.capital[0] : "No Capital",
       region: country.region,
@@ -33,7 +21,16 @@ export const getByRegion = createAsyncThunk(
       cca3: country.cca3,
       borders: country.borders || [],
     }));
+    console.log(arg.name);
 
+    const filteredData = arg.name
+      ? data.filter((country) =>
+          country.name.toLowerCase().includes(arg.name.toLowerCase())
+        )
+      : data;
+
+    console.log(filteredData, "filteredData");
+    console.log(data, "data");
     return filteredData;
   }
 );
