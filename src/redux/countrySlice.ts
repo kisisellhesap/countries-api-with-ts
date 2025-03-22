@@ -67,7 +67,7 @@ const countrySlice = createSlice({
       state.detailCountry = null;
     });
 
-    builder.addCase("persist/REHYDRATE", (state, action) => {
+    builder.addCase("persist/REHYDRATE", (state) => {
       state.rehydrated = true;
     });
   },
