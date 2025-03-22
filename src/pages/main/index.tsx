@@ -10,13 +10,13 @@ import NotFoundCountry from "../../components/notFoundCountry";
 
 const Main: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { countries, loading, error } = useSelector(
+  const { countries, loading, error, rehydrated } = useSelector(
     (store: RootState) => store.countries
   );
   const { name, region } = useSelector((store: RootState) => store.filter);
 
   useEffect(() => {
-    if (!countries.length) {
+    if (rehydrated) {
       dispatch(getCountries({ region, name }));
     }
   }, [dispatch, region, name]);

@@ -28,6 +28,7 @@ export interface CountryState {
   loading: boolean;
   error: string | undefined;
   detailCountry: DetailCountry | null;
+  rehydrated: boolean;
 }
 
 export interface GetCountriesArgs {

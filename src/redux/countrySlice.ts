@@ -8,6 +8,7 @@ const initialState: CountryState = {
   loading: false,
   error: undefined,
   detailCountry: null,
+  rehydrated: false,
 };
 
 const countrySlice = createSlice({
@@ -64,6 +65,10 @@ const countrySlice = createSlice({
       state.loading = false;
       state.error = action.error.message;
       state.detailCountry = null;
+    });
+
+    builder.addCase("persist/REHYDRATE", (state, action) => {
+      state.rehydrated = true;
     });
   },
 });
