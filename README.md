@@ -2,7 +2,7 @@
 
 - This project is a web application that displays detailed information about countries using the REST Countries API. It is built with modern technologies such as React, TypeScript, Redux Toolkit, and Tailwind CSS.
 
-🔗 Live Demo: Countries API with TS
+🔗 Live Demo: Countries API with TS  
 🔗 GitHub Repository: GitHub Repo
 
 # 🚀 Features
